@@ -6,6 +6,8 @@ import java.util.UUID;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
@@ -28,6 +30,11 @@ class RestApiDemoController {
 			new Skill("데드라인 예측 +10"),
 			new Skill("집중 시간 +10")
 		));
+	}
+
+	@RequestMapping(value = "/skills", method = RequestMethod.GET)
+	Iterable<Skill> getItems() {
+		return skills;
 	}
 }
 

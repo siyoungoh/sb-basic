@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,8 +33,8 @@ class RestApiDemoController {
 		));
 	}
 
-	@RequestMapping(value = "/skills", method = RequestMethod.GET)
-	Iterable<Skill> getItems() {
+	@GetMapping("/skills")
+	Iterable<Skill> getSkills() {
 		return skills;
 	}
 }

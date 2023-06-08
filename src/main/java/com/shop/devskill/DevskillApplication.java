@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
@@ -25,7 +26,7 @@ public class DevskillApplication {
 }
 
 @RestController
-	// @RequestMapping("/skills")
+@RequestMapping("/skills")
 class RestApiDemoController {
 	private final List<Skill> skills = new ArrayList<>();
 
@@ -38,12 +39,12 @@ class RestApiDemoController {
 		));
 	}
 
-	@GetMapping("/skills")
+	@GetMapping
 	Iterable<Skill> getSkills() {
 		return skills;
 	}
 
-	@GetMapping("/skills/{id}")
+	@GetMapping("/{id}")
 	Optional<Skill> getSkillById(@PathVariable String id) {
 		for (Skill c : skills) {
 			if (c.getId().equals(id)) {
@@ -54,13 +55,13 @@ class RestApiDemoController {
 		return Optional.empty();
 	}
 
-	@PostMapping("/skills")
+	@PostMapping
 	Skill postSkill(@RequestBody Skill skill) {
 		skills.add(skill);
 		return skill;
 	}
 
-	@PutMapping("/skills/{id}")
+	@PutMapping("/{id}")
 	Skill putSkill(@PathVariable String id,
 		@RequestBody Skill skill) {
 		int skillIndex = -1;
@@ -76,7 +77,7 @@ class RestApiDemoController {
 			postSkill(skill) : skill;
 	}
 
-	@DeleteMapping("/skills/{id}")
+	@DeleteMapping("/{id}")
 	void deleteSkill(@PathVariable String id) {
 		skills.removeIf(c -> c.getId().equals(id));
 	}

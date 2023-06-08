@@ -19,7 +19,16 @@ public class DevskillApplication {
 
 @RestController
 class RestApiDemoController {
-	private List<Skill> items = new ArrayList<>();
+	private List<Skill> skills = new ArrayList<>();
+
+	public RestApiDemoController() {
+		skills.addAll(List.of(
+			new Skill("디버깅 로그 분석 +10"),
+			new Skill("레퍼런스 검색 +10"),
+			new Skill("데드라인 예측 +10"),
+			new Skill("집중 시간 +10")
+		));
+	}
 }
 
 class Skill {

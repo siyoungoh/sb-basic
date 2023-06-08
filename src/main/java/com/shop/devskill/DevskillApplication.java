@@ -1,9 +1,12 @@
 package com.shop.devskill;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 public class DevskillApplication {
@@ -13,6 +16,12 @@ public class DevskillApplication {
 	}
 
 }
+
+@RestController
+class RestApiDemoController {
+	private List<Skill> items = new ArrayList<>();
+}
+
 class Skill {
 	private final String id;
 	private String name;
